@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jquery特效文字动画--by Bililovy</title>
+
+    <!--可无视-->
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/demo/Effects_Text20151023/style.css" />
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h3 id="effect">这是一款灵活的文字特效插件</h3>
+        <p id="effect1">基于jquery</p>
+    </div>
+    <div class="abc">11111</div>
+
+    <script src="http://www.jq22.com/demo/Effects_Text20151023/js/jquery.min.js"></script>
+    <script src="http://www.jq22.com/demo/Effects_Text20151023/js/jquery.easing.1.3.js"></script>
+    <script src="http://www.jq22.com/demo/Effects_Text20151023/js/core_plugin.js"></script>
+    <!--<script src="./demo.js"></script>-->
+    <!--<script>
+    (function($) {
+    "use strict";
+    var isOn = 0,
+    sets, fx, toAnimate = "#effect",
+    settings = {
+        animation: 8,
+        //动画方式 从1-15 每个数字代表一个动画 请自测效果
+        animationType: "in",
+        //显示方式 in 和out 参数，in代表入场,out代表出场
+        backwards: false,
+        //改变动画显示方向，默认false 设为true 动画将从后往前倒序播放
+        easing: "easeOutQuint",
+        speed: 1000,
+        //动画帧速 即在指定时间内完成动画
+        sequenceDelay: 100,
+        //场景延迟  即执行完上一个动画后，等待指定时间继续执行下一动画
+        startDelay: 0,
+        //开始延迟，即执行当前动画时，等待指定时间后再开始
+        offsetX: 100,
+        //动画元素 x坐标偏移量
+        offsetY: 50,
+        //动画元素 Y坐标偏移量
+        onComplete: doThis,
+        //回调函数 即 执行完动画后，需要执行的回调方法
+        restoreHTML: true //重置元素 即重复播放两次该动画 类似于此效果 默认true
+    };
+})
+</script>-->
+
+    <script>
+
+    // $(function(){
+    //     setTimeout(show, 2000);
+    // })
+    show();
+
+    function show() {
+        var isOn = 0, sets, fx, toAnimate = "#effect", settings = {
+            animation: 8, //动画方式 从1-15 每个数字代表一个动画 请自测效果
+            animationType: "in",//显示方式 in 和out 参数，in代表入场,out代表出场
+            backwards: false, //改变动画显示方向，默认false 设为true 动画将从后往前倒序播放
+            easing: "easeOutQuint", //这里的效果 可以参见http://code.ciaoca.com/jquery/easing/   
+            speed: 1000, //动画帧速 即在指定时间内完成动画
+            sequenceDelay: 100, //场景延迟  即执行完上一个动画后，等待指定时间继续执行下一动画
+            startDelay: 0, //开始延迟，即执行当前动画时，等待指定时间后再开始
+            offsetX: 100,//动画元素 x坐标偏移量
+            offsetY: 50,//动画元素 Y坐标偏移量
+            onComplete: abc, //回调函数 即 执行完动画后，需要执行的回调方法
+            restoreHTML: true  //重置元素 即重复播放两次该动画 类似于此效果 默认true
+        };
+
+        // jQuery(document).ready(function() {
+        // 	fx = jQuery("#effect");
+        // 	jQuery.cjTextFx(settings);
+        // 	jQuery.cjTextFx.animate(toAnimate);
+        // });
+
+        fx = jQuery("#effect");
+        jQuery.cjTextFx(settings);
+        jQuery.cjTextFx.animate(toAnimate);
+
+
+
+        //进入动画执行完回调函数
+        //onComplete，如果写show，会重复进入出去动画；如果为“”，则进来出去只执行一次。
+        function abc() {
+            sets = { animation: 5, animationType: "out", restoreHTML: false, onComplete: "" };
+            jQuery.cjTextFx.animate(fx, sets);
+
+        }
+    }
+</script>
+</body>
+
+</html>
